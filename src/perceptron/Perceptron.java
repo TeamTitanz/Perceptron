@@ -19,33 +19,30 @@ public class Perceptron {
         weights = new double[n];
         Random r = new Random();
         //initialize weights
-        for(int i=0;i<n;i++)
+        for(int i = 0; i < n; i++)
         {
             weights[i] = r.nextDouble();
         }
 
-        for(int i=0;i<epoch;i++)
+        for(int i = 0; i < epoch; i++)
         {
             int totalError = 0;
-            for(int j =0;j<p;j++)
+            for(int j = 0; j < p; j++)
             {
                 float output = Output(inputs[j]);
                 float error = outputs[j] - output;
 
-                totalError +=error;
+                totalError += error;
 
-                for(int k = 0;k<n;k++)
+                for(int k = 0; k < n; k++)
                 {
                     double delta = lrate * inputs[j][k] * error;
                     weights[k] += delta;
                 }
-
-
             }
             if(totalError == 0)
                 break;
         }
-
     }
 
     public float Output(float[] input)
